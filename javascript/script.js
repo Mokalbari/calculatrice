@@ -3,9 +3,9 @@
 // so start by creating functions for the following items and testing them in your browser’s console. 
 const calculator = {
     add: (a,b) => a+b,
-    substract:  (a,b) => a-b,
-    divide:  (a,b) => a/b,
-    multiply:  (a,b) => a*b,
+    substract: (a,b) => a-b,
+    divide: (a,b) => a/b,
+    multiply: (a,b) => a*b,
 }
 // A calculator operation will consist of a number, an operator, and another number. For example, 3 + 5. 
 // Create three variables for each of the parts of a calculator operation.

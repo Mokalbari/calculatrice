@@ -1,0 +1,86 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+#calculator {
+    margin: 100px;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.row button {
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 5px;
+    background-color: darkgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    padding : 20px;
+    border : 1px solid black;
+    border-radius: 50px;
+}
+
+#clear-btn, #back-btn {
+    width: 105px;
+    text-align: top;
+    margin-bottom: 5px;
+}
+
+.display-screen {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    border: 2px solid lightgray;
+    padding: 40px;
+    background-color: lightgray;
+    margin: 10px;
+    border-radius: 20px;;
+}
+
+.display-screen :nth-child(1){
+    font-size: 1.2rem;
+}
+
+.display-screen :nth-child(2){
+    font-size: 2rem;
+}
+
+.row{
+    display: flex;
+    gap: 5px;
+}
+
+button:hover {
+    background-color:lightgray;
+}
+
+#clear-btn:hover{
+    background-color: lightcoral;
+}
+#back-btn:hover{
+    background-color: lightgreen;
+}
+#divide:hover{
+    background-color: lightblue;
+}
+#multiply:hover{
+    background-color: lightpink;
+}
+#plus:hover{
+    background-color: lightgoldenrodyellow;
+}
+#substract:hover{
+    background-color: bisque;
+}
+#equal:hover{
+    background-color: azure;
+}

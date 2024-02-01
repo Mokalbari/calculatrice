@@ -43,7 +43,8 @@
     padding: 40px;
     background-color: lightgray;
     margin: 10px;
-    border-radius: 20px;;
+    border-radius: 20px;
+    height: 100px;
 }
 
 .display-screen :nth-child(1){

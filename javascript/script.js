@@ -1,13 +1,13 @@
-// Basic maths functions
-// Your calculator is going to contain functions for all of the basic math operators you typically find on calculators,
-// so start by creating functions for the following items and testing them in your browser’s console. 
+// Basic maths functions that will be called later
 const mathFunctions = {
     add: (a,b) => a+b,
     substract: (a,b) => a-b,
     divide: (a,b) => a/b,
     multiply: (a,b) => a*b,
 }
-// If a number or operator is clicked, store the ID value inside one of these.
+
+
+// Storage for later operations
 let firstOperand=[];
 let operator="";
 let lastOperand =[];
@@ -19,8 +19,8 @@ const calculatorButtons = document.querySelector(".calculator-buttons")
 const displayMainScreen = document.querySelector("#main-screen")
 const displaySecondScreen = document.querySelector("#small-screen")
 
-// Update the main screen everytime a num / operator is clicked
-// // The function converts the array to a string and conc. number
+
+// Functions to clarify the code structure while doing operations.
 const updateMainScreen = () => {
     if(result==="") {
     displayMainScreen.textContent = `${firstOperand.join("")} ${operator} ${lastOperand.join("")}`;
@@ -30,7 +30,6 @@ const updateMainScreen = () => {
     }
 }
 
-// The function Clear Area empties the first operand/ operator/ last operand
 const clearAll = () => {
     displayMainScreen.textContent="";
     displaySecondScreen.textContent="";
@@ -40,7 +39,7 @@ const clearAll = () => {
     result="";
 }
 
-const backBtn = () => {
+const backSpace = () => {
     if (operator!=="" && lastOperand.length>0){
         lastOperand.pop();
     } else if (operator!==""){
@@ -52,9 +51,7 @@ const backBtn = () => {
 
 
 // The function calculate conc.numb from first operand + last operands.
-// Switch operator contains + / - / / / *
-// // Apply correct ath functions
-// // update main screen with result.
+// First need to join array num and convert to number.
 const calculateResult = () => {
     let firstOperandValue = parseFloat(firstOperand.join(""))
     let lastOperandValue = parseFloat(lastOperand.join(""))
@@ -76,10 +73,8 @@ const calculateResult = () => {
     }
 }
 
-
-// If the class num is clicked
+// The main eventlistener. This makes sure the first input number is not a 0 or a dot.
 calculatorButtons.addEventListener("click", (event) => {
-// // Verify ID !== 0 unless first operand!=="" ou last operand !==""
     if (event.target.classList.contains("num")) {
         if (event.target.id==="0" && firstOperand.length===0){
             return
@@ -94,33 +89,9 @@ calculatorButtons.addEventListener("click", (event) => {
     } else if (event.target.id==="clear-btn"){
         clearAll();
     } else if (event.target.id==="back-btn") {
-        backBtn();
+        backSpace();
     } else if (event.target.id==="equal") {
         calculateResult();
-        
     }
     updateMainScreen()
 })
-
-// // Is the operator empty ?
-// // // If yes store value inside first operand
-// // // Otherwise store the value inside the second operand
-
-// If the class operator is clicked
-// // Store the value inside operator.
-// //( The operator value CANNOT contain multiple operator)
-
-// If the clear button is clicked
-// // Call the function clearAll()
-
-//If the back button is clicked
-// // Is the operator empty ?
-// // // If yes pop last value from firstOperand array
-// // // Otherwise pop last value from lastOperand array
-
-//If the button equal is clicked
-// // Convert string to number
-// // Call the funtion calculate result
-// // // Where a=first operand, b=operator, c=last operand
-
-// update main screen.

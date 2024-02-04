@@ -77,7 +77,9 @@ const calculateResult = () => {
 calculatorButtons.addEventListener("click", (event) => {
     if (event.target.classList.contains("num")) {
         if (event.target.id==="0" && firstOperand.length===0){
-            return
+            return;
+        } else if (event.target.id==="." && firstOperand[0]==="."){
+            return;
         }
         operator==="" ?
             firstOperand.push(event.target.textContent):

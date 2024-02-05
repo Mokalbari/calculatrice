@@ -70,7 +70,9 @@ const pushOperator = (event) => {
         operator = event
         mainScreenDisplay=[];
     } else if (result!==""){
-        smallScreenDisplay = [result];
+        if (result!==Math.floor(result)){
+        smallScreenDisplay = [+result.toFixed(2)];
+    }
         result = "";
         operator = event
         mainScreenDisplay=[]
@@ -82,15 +84,22 @@ const updateScreen = () => {
         mainScreen.textContent = mainScreenDisplay.join("");
         smallScreen.textContent = `${smallScreenDisplay.join("")} ${operator}`;
     } else if (result!==""){
-        mainScreen.textContent = `${result}`;
+        if (result!==Math.floor(result)){
+            mainScreen.textContent = `${+result.toFixed(2)}`;
+        }
         smallScreen.textContent = `${smallScreenDisplay.join("")} ${operator} ${mainScreenDisplay.join("")} = `;
     }
 
 }
 
 const calculateResult = () => {
+    if (mainScreenDisplay.length===0){
+        mainScreenDisplay[0]=0
+    }
     let smallScreenValue = parseFloat(smallScreenDisplay.join(""))
     let mainScreenValue = parseFloat(mainScreenDisplay.join(""))
+
+    
     switch (operator) {
         case "+" :
             result = MathFunctions.add(smallScreenValue,mainScreenValue);

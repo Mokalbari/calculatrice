@@ -1,15 +1,4 @@
-// Create some basic math function that will be called on later
-
-// Create a storing array that will store every number and operator.
-// Everytime a num class is clicked, add it to the array.
-// // The array has to check a few key points :
-// // cannot contain a 0 following a 0 after index 0
-// // A "." can be used once between every operator
-
-
-
-
-// Links to DOM
+// LINK TO DOM AND GLOBAL SCOPE VAR
 const calculatorButtons = document.querySelector(".calculator-buttons");
 const mainScreen = document.querySelector("#main-screen");
 const smallScreen = document.querySelector("#small-screen");
@@ -19,14 +8,14 @@ let smallScreenDisplay = [];
 let operator = "";
 let result = "";
 
-// Maths & functions for operations.
+// MATH AND FUNCTIONS
+// All functions from the calculator are here as standalone for better readability.
 const MathFunctions = {
     add: (a,b) => a+b,
     substract : (a,b) => a-b,
     multiply : (a,b) => a*b,
     divide : (a,b) => a/b,
 }
-
 
 const clearAll = () => {
     mainScreenDisplay=[];
@@ -47,6 +36,7 @@ const backSpace = () => {
     }
 }
 
+// This part shows how the script handles new number and operator.
 const pushNumber = (event) => {
     if (result===""){
         mainScreenDisplay.push(event)
@@ -57,8 +47,6 @@ const pushNumber = (event) => {
         operator = "";
         mainScreenDisplay.push(event)
     }
-
-
 }
 
 const pushOperator = (event) => {
@@ -69,24 +57,20 @@ const pushOperator = (event) => {
         smallScreenDisplay = mainScreenDisplay;
         operator = event
         mainScreenDisplay=[];
-    } else if (result!==""){
-        if (result!==Math.floor(result)){
-        smallScreenDisplay = [+result.toFixed(2)];
-    }
+    } else if (result!=="")
+        smallScreenDisplay = [result]
         result = "";
         operator = event
         mainScreenDisplay=[]
-    }
 }
 
+// This function is called everytime a new event happens It will display numbers based on the presence of result
 const updateScreen = () => {
     if (result===""){
         mainScreen.textContent = mainScreenDisplay.join("");
         smallScreen.textContent = `${smallScreenDisplay.join("")} ${operator}`;
     } else if (result!==""){
-        if (result!==Math.floor(result)){
-            mainScreen.textContent = `${+result.toFixed(2)}`;
-        }
+            mainScreen.textContent = `${result}`;
         smallScreen.textContent = `${smallScreenDisplay.join("")} ${operator} ${mainScreenDisplay.join("")} = `;
     }
 
@@ -119,7 +103,8 @@ const calculateResult = () => {
 }
 
 
-// inputs a number into mainScreenDisplay
+// Handle input.
+//click button input
 calculatorButtons.addEventListener("click", event => {
     if (event.target.id==="0" && mainScreenDisplay[0]==="0"){
         mainScreenDisplay[1]=".";
@@ -135,8 +120,57 @@ calculatorButtons.addEventListener("click", event => {
     } else if (event.target.id==="back-btn") {
         backSpace()
     } else if (event.target.id==="=") {
-        calculateResult()
+        calculateResult()-1
     }
     
     updateScreen()
 })
+
+// keydown input
+document.addEventListener("keydown", event => {
+    const key = event.key;
+    switch(key) {
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        case '.':
+            if (key==="0" && mainScreenDisplay[0]==="0"){
+                mainScreenDisplay[1]=".";
+            } else if (key==="." && mainScreenDisplay.includes(".")){
+                return
+            }
+            pushNumber(key);
+            break;Suprr
+
+        case '+':
+        case '-':
+        case '/':
+        case '*':
+            pushOperator(key);
+            break;
+
+        case 'Enter':
+            calculateResult();
+            break;
+
+        case 'Backspace':
+            backSpace();
+            break;
+
+        case 'Delete':
+            clearAll();
+            break;
+
+        default:
+            return;
+    }
+    updateScreen();
+    event.preventDefault(); // Prevent default key behavior.
+});

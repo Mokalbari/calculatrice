@@ -1,3 +1,30 @@
+:root {
+    --main-font-family: 'Courier New', Courier, monospace;
+    --main-background-color: darkgray;
+    --button-hover-color: lightgray;
+    --operator-hover-color: lightseagreen;
+    --control-state-hover-color: lightcoral;
+    --equal-hover-color: lightgreen;
+    --screen-border-color: #BDCAF2;
+    --button-font-color: rgb(242, 121, 222);
+    --button-background-image: linear-gradient(rgb(255, 255, 255) 0%, rgb(189, 224, 255) 100%);
+    --button-shadow: rgba(0, 0, 0, 0.021) 1px 3px 3px 3px;
+    --button-border: 1px solid rgb(103, 125, 139);
+    /* Existing variables */
+    --main-font-family: 'Courier New', Courier, monospace;
+    --main-background-color: darkgray;
+    --screen-border-color: #BDCAF2;
+    --button-font-color: rgb(242, 121, 222);
+    --button-background-image: linear-gradient(rgb(255, 255, 255) 0%, rgb(189, 224, 255) 100%);
+    --button-shadow: rgba(0, 0, 0, 0.021) 1px 3px 3px 3px;
+    --button-border: 2px solid rgb(103, 125, 139);
+    
+    /* Vaporwave color palette */
+    --vaporwave-color-1: #ff71ce; /* Pink */
+    --vaporwave-color-2: #01cdfe; /* Bright Blue */
+    --vaporwave-color-3: #05ffa1; /* Neon Green */
+    --vaporwave-color-4: #b967ff; /* Purple */
+}
 
 .container {
     display: flex;
@@ -6,15 +33,22 @@
 
 #calculator {
     margin: 100px;
-    border: 2px solid black;
     padding: 10px;
+    border: 1px solid black;
     border-radius: 10px;
+    background: linear-gradient(173deg, rgba(179,213,242,1) 0%, rgba(229,182,242,1) 100%);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.31);
 }
 
-.row button {
-    font-family: 'Courier New', Courier, monospace;
+.row {
+    display: flex;
+    gap: 5px;
+}
+
+.row button, #clear-btn, #back-btn {
+    font-family: var(--main-font-family);
     margin-bottom: 5px;
-    background-color: darkgray;
+    background-color: var(--main-background-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,33 +56,38 @@
     text-align: center;
     height: 50px;
     width: 50px;
-    padding : 20px;
-    border : 1px solid black;
-    border-radius: 50px;
+    padding: 10px;
+    border: var(--button-border);
+    border-radius: 10px;
+    color: var(--button-font-color);
+    font-weight: 900;
+    font-size: 1.2em;
+    line-height: 15px;
+    background-image: var(--button-background-image);
+    box-shadow: var(--button-shadow);
 }
 
 #clear-btn, #back-btn {
     width: 105px;
     text-align: top;
-    margin-bottom: 5px;
 }
 
 .display-screen {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--main-font-family);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    border: 2px solid lightgray;
+    border: 2px solid var(--screen-border-color);
     padding: 40px;
-    background-color: lightgray;
+    background-color: var(--screen-border-color);
     margin: 10px;
     border-radius: 20px;
     height: 100px;
 }
 
-#main-screen{
-    color:blueviolet;
+#main-screen, #small-screen {
+    color: blueviolet;
     font-size: 1.2em;
 }
 
@@ -56,23 +95,35 @@
     font-size: 1.1em;
 }
 
-.row{
-    display: flex;
-    gap: 5px;
-}
-
 button:hover {
-    background-color:lightgray;
+    background-color: var(--button-hover-color);
 }
 
 .operator:hover {
-    background-color:lightseagreen;
+    background-color: var(--operator-hover-color);
 }
 
 .control-state:hover {
-    background-color: lightcoral;
+    background-color: var(--control-state-hover-color);
 }
 
 .equal:hover {
-    background-color: lightgreen;
+    background-color: var(--equal-hover-color);
+}
+
+/* Button hover effect */
+button:hover {
+    background-image: linear-gradient(45deg, var(--vaporwave-color-1), var(--vaporwave-color-2), var(--vaporwave-color-3), var(--vaporwave-color-4));
+    background-size: 200% 200%; /* Enlarge background to enable the moving effect */
+    animation: gradientShift 1s ease infinite;
+    color: white; /* Change text color to improve visibility */
+    transition: color 0.5s, box-shadow 0.5s, transform 0.5s; /* Smooth transition for color, shadow, and transform */
+    transform: translateY(-2px); /* Slightly raise the button */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Enhance shadow for depth */
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }

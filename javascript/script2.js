@@ -57,6 +57,8 @@ const pushNumber = (event) => {
         operator = "";
         mainScreenDisplay.push(event)
     }
+
+
 }
 
 const pushOperator = (event) => {
@@ -111,8 +113,11 @@ const calculateResult = () => {
 // inputs a number into mainScreenDisplay
 calculatorButtons.addEventListener("click", event => {
     if (event.target.id==="0" && mainScreenDisplay[0]==="0"){
+        mainScreenDisplay[1]=".";
+    } else if (event.target.id==="." && mainScreenDisplay.includes(".")){
         return
-    } else if (event.target.classList.contains("num")){
+    }
+    if (event.target.classList.contains("num")){
         pushNumber(event.target.id)
     } else if (event.target.classList.contains("operator")) {
         pushOperator(event.target.id)

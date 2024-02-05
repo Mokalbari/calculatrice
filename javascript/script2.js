@@ -70,7 +70,7 @@ const updateScreen = () => {
         mainScreen.textContent = mainScreenDisplay.join("");
         smallScreen.textContent = `${smallScreenDisplay.join("")} ${operator}`;
     } else if (result!==""){
-            mainScreen.textContent = `${result}`;
+        mainScreen.textContent = `${result}`;
         smallScreen.textContent = `${smallScreenDisplay.join("")} ${operator} ${mainScreenDisplay.join("")} = `;
     }
 
@@ -87,15 +87,31 @@ const calculateResult = () => {
     switch (operator) {
         case "+" :
             result = MathFunctions.add(smallScreenValue,mainScreenValue);
+            if (result!==Math.floor(result)){
+                result = +result.toFixed(2)
+            }
             break;
         case "-" :
             result = MathFunctions.substract(smallScreenValue,mainScreenValue);
+            if (result!==Math.floor(result)){
+                result = +result.toFixed(2)
+            }
             break;
         case "/" :
+            if (smallScreenValue===0 || mainScreenValue===0){
+                result = `Impossible`
+            } else {
             result = MathFunctions.divide(smallScreenValue,mainScreenValue);
+            if (result!==Math.floor(result)){
+                result = +result.toFixed(2)
+            }
+        }
             break;
         case "*" :
             result = MathFunctions.multiply(smallScreenValue,mainScreenValue);
+            if (result!==Math.floor(result)){
+                result = +result.toFixed(2)
+            }
             break;
         default:
             return;

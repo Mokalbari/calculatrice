@@ -47,12 +47,13 @@
     height: 100px;
 }
 
-.display-screen :nth-child(1){
-    font-size: 1rem;
+#main-screen{
+    color:blueviolet;
+    font-size: 1.2em;
 }
 
-.display-screen :nth-child(2){
-    font-size: 1rem;
+#small-screen {
+    font-size: 1.1em;
 }
 
 .row{
@@ -64,24 +65,14 @@ button:hover {
     background-color:lightgray;
 }
 
-#clear-btn:hover{
+.operator:hover {
+    background-color:lightseagreen;
+}
+
+.control-state:hover {
     background-color: lightcoral;
 }
-#back-btn:hover{
+
+.equal:hover {
     background-color: lightgreen;
-}
-#divide:hover{
-    background-color: lightblue;
-}
-#multiply:hover{
-    background-color: lightpink;
-}
-#plus:hover{
-    background-color: lightgoldenrodyellow;
-}
-#substract:hover{
-    background-color: bisque;
-}
-#equal:hover{
-    background-color: azure;
 }
